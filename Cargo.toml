@@ -1,0 +1,42 @@
+[package]
+name = "data-cargo-22"
+version = "0.1.0"
+edition = "2021"
+authors = ["FssAy"]
+
+[dependencies]
+lazy_static = "1.4.0"
+litcrypt = "0.3.0"
+reqwest = "0.11.11"
+random-string = "1.0.0"
+
+[dependencies.serenity]
+version = "0.11.2"
+default-features = false
+features = ["client", "gateway", "rustls_backend", "model"]
+
+[dependencies.tokio]
+version = "1.19.2"
+features = ["full"]
+
+[dependencies.command-engine]
+git = "https://github.com/VulcoLibs/command-engine"
+version = "0.7.*"
+
+[workspace]
+members = [
+    "xmllite",
+]
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+control-flow-guard = "yes"
+debug-assertions = false
+debuginfo = 0
+lto = "yes"
+link-dead-code = "no"
+no-redzone = "yes"
+panic = "abort"
+rpath = false
+strip = true
